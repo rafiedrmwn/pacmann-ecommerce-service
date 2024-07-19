@@ -87,9 +87,6 @@ class Member:
 
     }
 
-    # print the result
-    print(f"Hasil perhitungan Euclidean Distance dari user {self.username} adalah {tier_dict}")
-
     # return the shortest distance from result_list
     min_distance = min(result_list)
 
@@ -98,11 +95,16 @@ class Member:
 
       # if the value is met with the shortest distance
       if value == min_distance:
-        return key
+        final_tier = key
+        break
 
     # if not met
     else:
       raise Exception('There is no tier met')
+
+    # print the result
+    print(f"Hasil perhitungan Euclidean Distance dari user {self.username} adalah {tier_dict}")
+    print(f"Tier membership dari user {self.username} adalah {final_tier}")
 
   # check total payment that user must pay with each of their membership tier
   def calculated_price(self, username, harga_barang):
@@ -122,4 +124,16 @@ class Member:
       discounted_price =  total_paid - (total_paid * 0.10)
     elif tier == 'Silver':
       discounted_price =  total_paid - (total_paid * 0.08)
-    return discounted_price
+    
+    # print the result
+    print(f"Total yang harus dibayar oleh user {self.username} adalah {discounted_price} setelah di-diskon")
+
+
+tets_obj = Member()
+tets_obj.check_benefit()
+print('')
+tets_obj.check_requirement()
+print('')
+tets_obj.predict_membership('rafie_d', 100, 150)
+print('')
+tets_obj.calculated_price('rafie_d', harga_barang)
