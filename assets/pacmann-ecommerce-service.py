@@ -111,6 +111,11 @@ class Member:
     self.username = username
     self.harga_barang = harga_barang
 
+    # attribute class for discount
+    PLATINUM_DISCOUNT = 0.15
+    GOLD_DISCOUNT = 0.10
+    SILVER_DISCOUNT = 0.8
+
     # acquire the tier from username
     tier = user_data[username]
 
@@ -119,11 +124,11 @@ class Member:
 
     # return the discounted price according to the tier
     if tier == 'Platinum':
-      discounted_price =  total_paid - (total_paid * 0.15)
+      discounted_price =  total_paid - (total_paid * PLATINUM_DISCOUNT)
     elif tier == 'Gold':
-      discounted_price =  total_paid - (total_paid * 0.10)
+      discounted_price =  total_paid - (total_paid * GOLD_DISCOUNT)
     elif tier == 'Silver':
-      discounted_price =  total_paid - (total_paid * 0.08)
+      discounted_price =  total_paid - (total_paid * SILVER_DISCOUNT)
     
     # print the result
     print(f"Total yang harus dibayar oleh user {self.username} adalah {discounted_price} setelah di-diskon")
